@@ -11,4 +11,4 @@ It's very easy to use, just some little soldering and time, and you will be able
 Starting the counter (pushing batteries) the rp pico will start an hot-spot connection called 'RPI_PICO_AP'.
 On your phone, tablet or PC connect to the network with this password: '12345678'. (You can change network name and password in the main.py file)
 Now open your browser and go to 192.168.4.1. A web page appear.
-![img] (img/Screenshot_20230714_171331_Chrome.jpg)
+![img] (/img/Screenshot_20230714_171331_Chrome.jpg)
