@@ -1,5 +1,5 @@
 def web_page(value):
-  HTML = """
+    HTML = """
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +8,22 @@ def web_page(value):
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;  /* changed from 'center' */
+            justify-content: center;
             height: 100vh;
             margin: 0;
-            padding-top: 10vh;  /* increased padding-top to push content down */
             background-color: #F3F4F6;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%%;
+            max-width: 1200px;
+            padding: 10vh 0;
+        }
+        .group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         h1 {
             font-size: 75px;
@@ -41,18 +52,39 @@ def web_page(value):
         #start {
             background-color: #34D399;
         }
+        #set-time {
+            background-color: #2563EB;
+        }
+        input {
+            margin-bottom: 20px;
+            font-size: 70px;
+            width: 600px;
+            height: 100px;
+            text-align: center;
+        }
     </style>
+    <script>
+        function setTime() {
+            var time = document.getElementById("time").value;
+            window.location.href = "/set_time?time=" + time;
+        }
+    </script>
 </head>
 <body>
-
-<h1>Value: %s</h1>
-
-<button id="increase" onclick="location.href='/increase'">Increase</button>
-<button id="decrease" onclick="location.href='/decrease'">Decrease</button>
-<button id="start" onclick="location.href='/start'">Start</button>
-
+    <div class="container">
+        <div class="group">
+            <h1>Set Time</h1>
+            <input type="number" id="time" min="0" placeholder="Set Time">
+            <button id="set-time" onclick="setTime()">Set Time</button>
+        </div>
+        <div class="group">
+            <h1>Value: %s</h1>
+            <button id="increase" onclick="location.href='/increase'">Increase</button>
+            <button id="decrease" onclick="location.href='/decrease'">Decrease</button>
+            <button id="start" onclick="location.href='/start'">Start</button>
+        </div>
+    </div>
 </body>
 </html>
-
 """
-  return HTML % value
+    return HTML % value

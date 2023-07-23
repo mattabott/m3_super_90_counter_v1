@@ -34,9 +34,11 @@ poller = select.poll()
 poller.register(s, select.POLLIN)
 
 running = True
-timeout = 30000
+timeout = 60000
 
 time_on, value = settings.load_settings()
+
+check_timer = 0
 
 while running:
     res = poller.poll(timeout)
@@ -69,9 +71,13 @@ while running:
         elif request_line.startswith('/set_time'):
             time_on_str = request_line.split('?')[1].split('=')[1]
             time_on = int(time_on_str)
+            check_timer = 1
             print('Time on set to %s ms' % time_on)
 
         elif request_line == '/start':
+            if check_timer == 0:
+                time_on = 'False'
+            
             leds.save_value(value)
             leds.leds_together(0)
             settings.save_settings(time_on, value) # saving settings
@@ -113,7 +119,7 @@ while True:
         elif leds.endstop.value():
             leds.previous_state = leds.endstop.value()
 
-        if time_on is not None and utime.ticks_diff(current_time, leds.led_timer) > time_on:
+        if time_on != 'False' and utime.ticks_diff(current_time, leds.led_timer) > time_on:
             leds.leds_together(0)
             
         utime.sleep_ms(10)

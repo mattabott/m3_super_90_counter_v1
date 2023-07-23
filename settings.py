@@ -10,7 +10,11 @@ def load_settings():
     if 'settings.txt' in os.listdir():
         with open('settings.txt', 'r') as f:
             lines = f.readlines()
-            time_on = int(lines[0].strip())
+            time_on = lines[0].strip()
+            print(time_on)
+            print(type(time_on))
+            if time_on != 'False':
+                time_on = int(time_on)
             value = int(lines[1].strip())
             return time_on, value
     else:
