@@ -1,3 +1,31 @@
+# Shot Counter for Tokyo Marui M3 Super 90
+
+This project uses a Raspberry Pi Pico to count shots fired from an M3 Super 90 airsoft gun by Tokyo Marui. It uses two LEDs (one red and one green) to visually display the count and a button to start the count.
+
+## Features
+
+- **Shot Counting**: The system keeps track of the number of shots fired and displays the count via the LEDs.
+- **Web Interface**: The device can be controlled via a simple web interface, which allows you to increase, decrease the value, set a time, and start the system.
+- **Setting Saving**: Settings such as brightness value and time can be saved and loaded between sessions.
+
+## Circuit Diagram
+
+- **Red LED**: Connected to pin 5.
+- **Green LED**: Connected to pin 13.
+- **Button (Endstop)**: Connected to pin 0, configured with pull-up.
+
+## How to Use
+
+1. **Load the Code**: Load the `main.py`, `leds.py`, `settings.py`, and `web_page.py` files onto the Raspberry Pi Pico.
+2. **Configure the Network**: Modify the `ssid` and `password` variables in `main.py` to set the name and password for the Wi-Fi hotspot.
+3. **Start the System**: Press the button to start counting shots.
+4. **Web Interface**: Connect to the IP address displayed on the console to access the web interface and control the system.
+
+
+
+
+
+
 # Marui M3 super 90 counter
 
 Hello everyone, this is a little project to upgrade your Marui M3 super 90 shotgun!
